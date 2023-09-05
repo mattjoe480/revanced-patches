@@ -2,24 +2,17 @@ package app.revanced.patches.music.misc.bitrate.patch
 
 import app.revanced.patcher.annotation.Description
 import app.revanced.patcher.annotation.Name
-import app.revanced.patcher.annotation.Version
 import app.revanced.patcher.data.ResourceContext
-import app.revanced.patcher.patch.PatchResult
-import app.revanced.patcher.patch.PatchResultSuccess
 import app.revanced.patcher.patch.ResourcePatch
-import app.revanced.patcher.patch.annotations.DependsOn
 import app.revanced.patcher.patch.annotations.Patch
 import app.revanced.patches.music.utils.annotations.MusicCompatibility
-import app.revanced.patches.music.utils.fix.decoding.patch.DecodingPatch
 
 @Patch
 @Name("Bitrate default value")
 @Description("Set the audio quality to \"Always High\" when you first install the app.")
-@DependsOn([DecodingPatch::class])
 @MusicCompatibility
-@Version("0.0.1")
 class BitrateDefaultValuePatch : ResourcePatch {
-    override fun execute(context: ResourceContext): PatchResult {
+    override fun execute(context: ResourceContext) {
         context.xmlEditor[RESOURCE_FILE_PATH].use { editor ->
             editor.file.getElementsByTagName("com.google.android.apps.youtube.music.ui.preference.PreferenceCategoryCompat")
                 .item(0).childNodes.apply {
@@ -39,7 +32,6 @@ class BitrateDefaultValuePatch : ResourcePatch {
                 }
         }
 
-        return PatchResultSuccess()
     }
 
     private companion object {

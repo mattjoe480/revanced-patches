@@ -2,17 +2,13 @@ package app.revanced.patches.music.utils.microg.bytecode.patch
 
 import app.revanced.patcher.annotation.Description
 import app.revanced.patcher.annotation.Name
-import app.revanced.patcher.annotation.Version
 import app.revanced.patcher.data.BytecodeContext
 import app.revanced.patcher.patch.BytecodePatch
-import app.revanced.patcher.patch.PatchResult
-import app.revanced.patcher.patch.PatchResultError
-import app.revanced.patcher.patch.PatchResultSuccess
+import app.revanced.patcher.patch.PatchException
 import app.revanced.patcher.patch.annotations.DependsOn
 import app.revanced.patcher.patch.annotations.Patch
 import app.revanced.patches.music.utils.annotations.MusicCompatibility
 import app.revanced.patches.music.utils.fix.clientspoof.patch.ClientSpoofMusicPatch
-import app.revanced.patches.music.utils.fix.decoding.patch.DecodingPatch
 import app.revanced.patches.music.utils.microg.bytecode.fingerprints.CastContextFetchFingerprint
 import app.revanced.patches.music.utils.microg.bytecode.fingerprints.CastDynamiteModuleFingerprint
 import app.revanced.patches.music.utils.microg.bytecode.fingerprints.CastDynamiteModuleV2Fingerprint
@@ -29,7 +25,6 @@ import app.revanced.util.microg.MicroGBytecodeHelper
 @DependsOn(
     [
         ClientSpoofMusicPatch::class,
-        DecodingPatch::class,
         MicroGResourcePatch::class,
         PackageNamePatch::class
     ]
@@ -37,7 +32,6 @@ import app.revanced.util.microg.MicroGBytecodeHelper
 @Name("MicroG support")
 @Description("Allows ReVanced Music to run without root and under a different package name with MicroG.")
 @MusicCompatibility
-@Version("0.0.2")
 class MicroGPatch : BytecodePatch(
     listOf(
         ServiceCheckFingerprint,
@@ -55,15 +49,15 @@ class MicroGPatch : BytecodePatch(
     // - "com.google.android.gms.phenotype.PACKAGE_NAME",
     // - "com.google.android.gms.phenotype.UPDATE",
     // - "com.google.android.gms.phenotype",
-    override fun execute(context: BytecodeContext): PatchResult {
+    override fun execute(context: BytecodeContext) {
         val youtubePackageName = PackageNamePatch.YouTubePackageName
-            ?: throw PatchResultError("Invalid package name.")
+            ?: throw PatchException("Invalid package name.")
 
         val musicPackageName = PackageNamePatch.MusicPackageName
-            ?: throw PatchResultError("Invalid package name.")
+            ?: throw PatchException("Invalid package name.")
 
         if (youtubePackageName == YOUTUBE_PACKAGE_NAME || musicPackageName == MUSIC_PACKAGE_NAME)
-            throw PatchResultError("Original package name is not available as package name for MicroG build.")
+            throw PatchException("Original package name is not available as package name for MicroG build.")
 
         // apply common microG patch
         MicroGBytecodeHelper.patchBytecode(
@@ -88,6 +82,5 @@ class MicroGPatch : BytecodePatch(
             )
         )
 
-        return PatchResultSuccess()
     }
 }

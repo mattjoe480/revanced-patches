@@ -1,9 +1,8 @@
 package app.revanced.patches.youtube.utils.returnyoutubedislike.general.patch
 
-import app.revanced.extensions.toErrorResult
+import app.revanced.extensions.exception
 import app.revanced.patcher.annotation.Description
 import app.revanced.patcher.annotation.Name
-import app.revanced.patcher.annotation.Version
 import app.revanced.patcher.data.BytecodeContext
 import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstruction
@@ -12,8 +11,6 @@ import app.revanced.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.revanced.patcher.fingerprint.method.impl.MethodFingerprint
 import app.revanced.patcher.fingerprint.method.impl.MethodFingerprint.Companion.resolve
 import app.revanced.patcher.patch.BytecodePatch
-import app.revanced.patcher.patch.PatchResult
-import app.revanced.patcher.patch.PatchResultSuccess
 import app.revanced.patcher.patch.annotations.DependsOn
 import app.revanced.patcher.patch.annotations.Patch
 import app.revanced.patches.youtube.utils.annotations.YouTubeCompatibility
@@ -30,6 +27,7 @@ import app.revanced.patches.youtube.utils.returnyoutubedislike.shorts.patch.Retu
 import app.revanced.patches.youtube.utils.settings.resource.patch.SettingsPatch
 import app.revanced.patches.youtube.utils.videoid.general.patch.VideoIdPatch
 import app.revanced.util.integrations.Constants.UTILS_PATH
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -47,7 +45,6 @@ import com.android.tools.smali.dexlib2.iface.reference.Reference
     ]
 )
 @YouTubeCompatibility
-@Version("0.0.1")
 class ReturnYouTubeDislikePatch : BytecodePatch(
     listOf(
         DislikeFingerprint,
@@ -56,13 +53,13 @@ class ReturnYouTubeDislikePatch : BytecodePatch(
         TextComponentConstructorFingerprint
     )
 ) {
-    override fun execute(context: BytecodeContext): PatchResult {
+    override fun execute(context: BytecodeContext) {
         listOf(
             LikeFingerprint.toPatch(Vote.LIKE),
             DislikeFingerprint.toPatch(Vote.DISLIKE),
             RemoveLikeFingerprint.toPatch(Vote.REMOVE_LIKE)
         ).forEach { (fingerprint, vote) ->
-            with(fingerprint.result ?: return fingerprint.toErrorResult()) {
+            with(fingerprint.result ?: throw fingerprint.exception) {
                 mutableMethod.addInstructions(
                     0,
                     """
@@ -83,11 +80,23 @@ class ReturnYouTubeDislikePatch : BytecodePatch(
                 )
             }.result?.let {
                 it.mutableMethod.apply {
-                    val conversionContextIndex = it.scanResult.patternScanResult!!.startIndex
-                    conversionContextFieldReference =
-                        getInstruction<ReferenceInstruction>(conversionContextIndex).reference
+                    val booleanIndex = it.scanResult.patternScanResult!!.endIndex
+
+                    for (index in booleanIndex downTo 0) {
+                        if (getInstruction(index).opcode != Opcode.IGET_OBJECT) continue
+
+                        val targetReference =
+                            getInstruction<ReferenceInstruction>(index).reference.toString()
+
+                        if (targetReference.endsWith("Ljava/util/Map;")) {
+                            conversionContextFieldReference =
+                                getInstruction<ReferenceInstruction>(index - 1).reference
+
+                            break
+                        }
+                    }
                 }
-            } ?: return TextComponentContextFingerprint.toErrorResult()
+            } ?: throw TextComponentContextFingerprint.exception
 
             TextComponentTmpFingerprint.also {
                 it.resolve(
@@ -100,7 +109,7 @@ class ReturnYouTubeDislikePatch : BytecodePatch(
                     tmpRegister =
                         getInstruction<FiveRegisterInstruction>(startIndex).registerE
                 }
-            } ?: return TextComponentTmpFingerprint.toErrorResult()
+            } ?: throw TextComponentTmpFingerprint.exception
 
 
             val textComponentAtomicReferenceResult =
@@ -110,7 +119,7 @@ class ReturnYouTubeDislikePatch : BytecodePatch(
                     ?: TextComponentAtomicReferenceLegacyFingerprint.also {
                         it.resolve(context, parentResult.classDef)
                     }.result
-                    ?: return TextComponentAtomicReferenceLegacyFingerprint.toErrorResult()
+                    ?: throw TextComponentAtomicReferenceLegacyFingerprint.exception
 
             TextComponentAtomicReferenceFingerprint.also {
                 it.resolve(context, parentResult.classDef)
@@ -156,7 +165,7 @@ class ReturnYouTubeDislikePatch : BytecodePatch(
                     removeInstruction(insertIndex)
                 }
             }
-        } ?: return TextComponentConstructorFingerprint.toErrorResult()
+        } ?: throw TextComponentConstructorFingerprint.exception
 
 
         VideoIdPatch.injectCall("$INTEGRATIONS_RYD_CLASS_DESCRIPTOR->newVideoLoaded(Ljava/lang/String;)V")
@@ -168,7 +177,6 @@ class ReturnYouTubeDislikePatch : BytecodePatch(
 
         SettingsPatch.updatePatchStatus("return-youtube-dislike")
 
-        return PatchResultSuccess()
     }
 
     private companion object {

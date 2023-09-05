@@ -1,9 +1,6 @@
 package app.revanced.patches.youtube.utils.resourceid.patch
 
 import app.revanced.patcher.data.ResourceContext
-import app.revanced.patcher.patch.PatchResult
-import app.revanced.patcher.patch.PatchResultError
-import app.revanced.patcher.patch.PatchResultSuccess
 import app.revanced.patcher.patch.ResourcePatch
 import app.revanced.patcher.patch.annotations.DependsOn
 import app.revanced.patches.shared.patch.mapping.ResourceMappingPatch
@@ -31,7 +28,6 @@ class SharedResourceIdPatch : ResourcePatch {
         var Bar: Long = -1
         var BarContainerHeight: Long = -1
         var BottomPanelOverlayText: Long = -1
-        var BottomSheetMargins: Long = -1
         var BottomUiContainerStub: Long = -1
         var ChannelListSubMenu: Long = -1
         var CompactLink: Long = -1
@@ -81,17 +77,18 @@ class SharedResourceIdPatch : ResourcePatch {
         var VideoZoomIndicatorLayout: Long = -1
         var WordMarkHeader: Long = -1
         var YoutubeControlsOverlay: Long = -1
+        var YtBrandBackgroundSolid: Long = -1
         var YtOutlineArrowTimeBlack: Long = -1
         var YtOutlineFireBlack: Long = -1
         var YtOutlineSearchBlack: Long = -1
     }
 
-    override fun execute(context: ResourceContext): PatchResult {
+    override fun execute(context: ResourceContext) {
 
         fun find(resourceType: ResourceType, resourceName: String) = ResourceMappingPatch
             .resourceMappings
             .find { it.type == resourceType.value && it.name == resourceName }?.id
-            ?: throw PatchResultError("Failed to find resource id : $resourceName")
+            ?: -1
 
         AccountSwitcherAccessibility = find(STRING, "account_switcher_accessibility_label")
         AccessibilityCaptionsButtonName = find(STRING, "accessibility_captions_button_name")
@@ -105,7 +102,6 @@ class SharedResourceIdPatch : ResourcePatch {
         Bar = find(LAYOUT, "bar")
         BarContainerHeight = find(DIMEN, "bar_container_height")
         BottomPanelOverlayText = find(ID, "bottom_panel_overlay_text")
-        BottomSheetMargins = find(DIMEN, "bottom_sheet_margins")
         BottomUiContainerStub = find(ID, "bottom_ui_container_stub")
         ChannelListSubMenu = find(LAYOUT, "channel_list_sub_menu")
         CompactLink = find(LAYOUT, "compact_link")
@@ -159,10 +155,10 @@ class SharedResourceIdPatch : ResourcePatch {
         VideoZoomIndicatorLayout = find(ID, "video_zoom_indicator_layout")
         WordMarkHeader = find(ATTR, "ytWordmarkHeader")
         YoutubeControlsOverlay = find(ID, "youtube_controls_overlay")
+        YtBrandBackgroundSolid = find(ATTR, "ytBrandBackgroundSolid")
         YtOutlineArrowTimeBlack = find(DRAWABLE, "yt_outline_arrow_time_black_24")
         YtOutlineFireBlack = find(DRAWABLE, "yt_outline_fire_black_24")
         YtOutlineSearchBlack = find(DRAWABLE, "yt_outline_search_black_24")
 
-        return PatchResultSuccess()
     }
 }
