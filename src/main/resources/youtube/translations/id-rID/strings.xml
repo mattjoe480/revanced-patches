@@ -139,9 +139,6 @@
     <string name="revanced_enable_tablet_navigation_bar_summary_off">Bilah navigasi tablet dinonaktifkan</string>
     <string name="revanced_enable_tablet_navigation_bar_summary_on">Bilah navigasi tablet diaktifkan</string>
     <string name="revanced_enable_tablet_navigation_bar_title">Aktifkan bilah navigasi tablet</string>
-    <string name="revanced_enable_time_stamp_speed_summary_off">Tambahkan kecepatan stempel waktu dinonaktifkan</string>
-    <string name="revanced_enable_time_stamp_speed_summary_on">Tambahkan kecepatan stempel waktu diaktifkan</string>
-    <string name="revanced_enable_time_stamp_speed_title">Aktifkan kecepatan stempel waktu</string>
     <string name="revanced_enable_vp9_codec_summary">Palsukan informasi perangkat untuk mengaktifkan codec vp9</string>
     <string name="revanced_enable_vp9_codec_title">Aktifkan codec vp9</string>
     <string name="revanced_enable_wide_search_bar_summary_off">Bilah pencarian lebar dinonaktifkan</string>
@@ -589,7 +586,6 @@ Karena setelan ini sudah cukup usang, mungkin tidak valid"</string>
     <string name="revanced_shorts_player_title">Pemutar shorts</string>
     <string name="revanced_show_fullscreen_title_summary">Masalah yang diketahui: Judul menghilang saat diklik</string>
     <string name="revanced_show_fullscreen_title_title">Tampilkan judul layar penuh</string>
-    <string name="revanced_sponsorblock_settings_summary">Setelan terkait SponsorBlock</string>
     <string name="revanced_spoof_app_version_summary">"Memalsukan versi klien ke versi lama
 
 Ini akan mengubah tampilan aplikasi, tetapi efek samping yang tidak diketahui dapat terjadi
@@ -777,8 +773,6 @@ Masalah yang diketahui
     <string name="sb_reset_color">Atur ulang warna</string>
     <string name="sb_reset">Atur ulang</string>
     <string name="sb_about_api_sum">Data disediakan oleh API SponsorBlock. Tekan di sini untuk mempelajari lebih lanjut dan melihat hasil download untuk platform lain</string>
-    <string name="sb_about_made_by">Integrasi dibuat oleh JakubWeg</string>
-    <string name="seconds">detik</string>
     <string name="settings_export_failed">Gagal mengekspor setelan</string>
     <string name="settings_export_successful">Setelan berhasil diekspor</string>
     <string name="settings_ie">Setelan impor/ekspor</string>

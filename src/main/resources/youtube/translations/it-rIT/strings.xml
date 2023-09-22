@@ -139,9 +139,6 @@
     <string name="revanced_enable_tablet_navigation_bar_summary_off">La barra di navigazione da tablet è disattivata</string>
     <string name="revanced_enable_tablet_navigation_bar_summary_on">La barra di navigazione da tablet è attivata</string>
     <string name="revanced_enable_tablet_navigation_bar_title">Attiva la barra di navigazione da tablet</string>
-    <string name="revanced_enable_time_stamp_speed_summary_off">La velocità di riproduzione è nascosta</string>
-    <string name="revanced_enable_time_stamp_speed_summary_on">La velocità di riproduzione è visibile</string>
-    <string name="revanced_enable_time_stamp_speed_title">Mostra la velocità di riproduzione</string>
     <string name="revanced_enable_vp9_codec_summary">Simula le informazioni del dispositivo per attivare il codec VP9</string>
     <string name="revanced_enable_vp9_codec_title">Attiva il codec VP9</string>
     <string name="revanced_enable_wide_search_bar_summary_off">La barra di ricerca estesa è disattivata</string>
@@ -590,7 +587,6 @@ Dal momento che questa opzione è abbastanza obsoleta, potrebbe risultare non pi
     <string name="revanced_shorts_player_title">Riproduttore degli Shorts</string>
     <string name="revanced_show_fullscreen_title_summary">Problema noto: il titolo scompare quando viene toccato</string>
     <string name="revanced_show_fullscreen_title_title">Mostra il titolo a schermo intero</string>
-    <string name="revanced_sponsorblock_settings_summary">Impostazioni relative a SponsorBlock</string>
     <string name="revanced_spoof_app_version_summary">"Simulando la versione del client alla vecchia versione.
 
 Questo cambierà l'aspetto dell'app, ma potrebbero verificarsi effetti collaterali sconosciuti.
@@ -781,8 +777,6 @@ Soglia raggiunta (troppe richieste provenienti dallo stesso utente o IP)</string
     <string name="sb_reset_color">Ripristina colore</string>
     <string name="sb_reset">Ripristina</string>
     <string name="sb_about_api_sum">I dati sono forniti dall\'API di SponsorBlock. Tocca qui per saperne di più e vedere i download per altre piattaforme</string>
-    <string name="sb_about_made_by">Integrazione a cura di JakubWeg</string>
-    <string name="seconds">secondi</string>
     <string name="settings_export_failed">Impossibile esportare le impostazioni</string>
     <string name="settings_export_successful">Impostazioni esportate correttamente</string>
     <string name="settings_ie">Importa/Esporta impostazioni</string>

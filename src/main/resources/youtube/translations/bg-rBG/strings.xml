@@ -139,9 +139,6 @@
     <string name="revanced_enable_tablet_navigation_bar_summary_off">Навигационната лента за таблет е изключена</string>
     <string name="revanced_enable_tablet_navigation_bar_summary_on">Навигационната лента за таблет е включена</string>
     <string name="revanced_enable_tablet_navigation_bar_title">Навигационна лента за таблет</string>
-    <string name="revanced_enable_time_stamp_speed_summary_off">Скоростта при добавяне на времево клеймо е изключена</string>
-    <string name="revanced_enable_time_stamp_speed_summary_on">Скоростта при добавяне на времево клеймо е включена</string>
-    <string name="revanced_enable_time_stamp_speed_title">Скорост при добавяне на времево клеймо</string>
     <string name="revanced_enable_vp9_codec_summary">Замяна на параметрите за устройството за включване на VP9 кодек</string>
     <string name="revanced_enable_vp9_codec_title">Включване на VP9 кодек</string>
     <string name="revanced_enable_wide_search_bar_summary_off">Широката лента за търсене е изключена</string>
@@ -590,7 +587,6 @@
     <string name="revanced_shorts_player_title">Плейър за кратки клипове</string>
     <string name="revanced_show_fullscreen_title_summary">Известен проблем: Заглавието изчезва при докосване</string>
     <string name="revanced_show_fullscreen_title_title">Показване на заглавието при цял екран</string>
-    <string name="revanced_sponsorblock_settings_summary">Настройки относно SponsorBlock</string>
     <string name="revanced_spoof_app_version_summary">"Подлъгване на клиента с остаряла версия
 
 Това ще промени външния вид на приложението но могат да възникнат непознати странични ефекти
@@ -778,8 +774,6 @@
     <string name="sb_reset_color">Възстановяване на цвят</string>
     <string name="sb_reset">Нулиране</string>
     <string name="sb_about_api_sum">Данните са предоставени от SponsorBlock API. Докоснете тук за повече информация и изтеглияния</string>
-    <string name="sb_about_made_by">Внедрено от JakubWeg</string>
-    <string name="seconds">сек</string>
     <string name="settings_export_failed">Неуспешно експортиране на настройките</string>
     <string name="settings_export_successful">Настройките са експортирани успешно</string>
     <string name="settings_ie">Импортиране/експортиране на настройките</string>

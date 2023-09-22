@@ -139,9 +139,6 @@
     <string name="revanced_enable_tablet_navigation_bar_summary_off">Планшетная панель навигации отключена</string>
     <string name="revanced_enable_tablet_navigation_bar_summary_on">Планшетная панель навигации включена</string>
     <string name="revanced_enable_tablet_navigation_bar_title">Планшетная панель навигации</string>
-    <string name="revanced_enable_time_stamp_speed_summary_off">Индикатор скорости воспроизведения скрыт</string>
-    <string name="revanced_enable_time_stamp_speed_summary_on">Индикатор скорости воспроизведения отображен</string>
-    <string name="revanced_enable_time_stamp_speed_title">Индикатор скорости воспроизведения</string>
     <string name="revanced_enable_vp9_codec_summary">Подменяет информацию об устройстве для включения кодека VP9</string>
     <string name="revanced_enable_vp9_codec_title">Кодек VP9</string>
     <string name="revanced_enable_wide_search_bar_summary_off">Широкая панель поиска отключена</string>
@@ -589,7 +586,6 @@
     <string name="revanced_shorts_player_title">Плеер \"Shorts\"</string>
     <string name="revanced_show_fullscreen_title_summary">Известная проблема: заголовок исчезает при нажатии</string>
     <string name="revanced_show_fullscreen_title_title">Полноэкранный заголовок</string>
-    <string name="revanced_sponsorblock_settings_summary">Настройки блокировки спонсорской рекламы (SponsorBlock)</string>
     <string name="revanced_spoof_app_version_summary">"Подменяет версию клиента на старую
 
 Это изменит внешний вид приложения, но могут возникнуть неизвестные проблемы. Если отключить данную опцию после ее активации, старый интерфейс может оставаться до тех пор, пока данные приложения не будут очищены"</string>
@@ -776,8 +772,6 @@
     <string name="sb_reset_color">Сбросить цвет</string>
     <string name="sb_reset">Сброс</string>
     <string name="sb_about_api_sum">Данные предоставлены API SponsorBlock. Нажмите здесь, чтобы узнать больше и увидеть загрузки для других платформ</string>
-    <string name="sb_about_made_by">Автор интеграции - JakubWeg</string>
-    <string name="seconds">секунд</string>
     <string name="settings_export_failed">Не удалось сохранить настройки</string>
     <string name="settings_export_successful">Настройки успешно сохранены</string>
     <string name="settings_ie">Экспорт / Импорт настроек</string>

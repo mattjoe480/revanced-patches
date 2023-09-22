@@ -31,6 +31,8 @@ internal object MusicResourceHelper {
 
     internal const val YOUTUBE_MUSIC_SETTINGS_KEY = "revanced_extended_settings"
 
+    internal const val RETURN_YOUTUBE_DISLIKE_SETTINGS_KEY = "revanced_ryd_settings"
+
     private const val YOUTUBE_MUSIC_PREFERENCE_SCREEN_TAG_NAME =
         "PreferenceScreen"
 
@@ -40,7 +42,7 @@ internal object MusicResourceHelper {
     private const val YOUTUBE_MUSIC_PREFERENCE_TARGET_CLASS =
         "com.google.android.libraries.strictmode.penalties.notification.FullStackTraceActivity"
 
-    private var targetPackage = "com.google.android.apps.youtube.music"
+    internal var targetPackage = "com.google.android.apps.youtube.music"
 
     internal fun ResourceContext.setMicroG(newPackage: String) {
         targetPackage = newPackage
@@ -108,7 +110,8 @@ internal object MusicResourceHelper {
     internal fun ResourceContext.addMusicPreference(
         category: String,
         key: String,
-        defaultValue: String
+        defaultValue: String,
+        dependencyKey: String
     ) {
         this.xmlEditor[YOUTUBE_MUSIC_SETTINGS_PATH].use { editor ->
             val tags = editor.file.getElementsByTagName(YOUTUBE_MUSIC_PREFERENCE_SCREEN_TAG_NAME)
@@ -120,6 +123,9 @@ internal object MusicResourceHelper {
                         setAttribute("android:summary", "@string/$key" + "_summary")
                         setAttribute("android:key", key)
                         setAttribute("android:defaultValue", defaultValue)
+                        if (dependencyKey != "") {
+                            setAttribute("android:dependency", dependencyKey)
+                        }
                     }
                 }
         }
@@ -139,7 +145,9 @@ internal object MusicResourceHelper {
                         setAttribute("android:title", "@string/$key" + "_title")
                         setAttribute("android:summary", "@string/$key" + "_summary")
                         setAttribute("android:key", key)
-                        setAttribute("android:dependency", dependencyKey)
+                        if (dependencyKey != "") {
+                            setAttribute("android:dependency", dependencyKey)
+                        }
                         this.adoptChild("intent") {
                             setAttribute("android:targetPackage", targetPackage)
                             setAttribute("android:data", key)

@@ -19,7 +19,7 @@
     <string name="revanced_change_homepage_title">起動時のタブを登録チャンネルにする</string>
     <string name="revanced_comments_title">コメント</string>
     <string name="revanced_copy_video_timestamp_success">タイムスタンプをコピーしました</string>
-    <string name="revanced_custom_filter_strings_summary">行区切りの名前でコンポーネントをフィルター</string>
+    <string name="revanced_custom_filter_strings_summary">コンポーネントを名前でフィルター (改行区切り)</string>
     <string name="revanced_custom_filter_strings_title">カスタムフィルターの編集</string>
     <string name="revanced_custom_filter_summary_off">カスタムフィルターは無効です</string>
     <string name="revanced_custom_filter_summary_on">カスタムフィルターは有効です</string>
@@ -139,9 +139,6 @@
     <string name="revanced_enable_tablet_navigation_bar_summary_off">タブレットのナビゲーションバーは無効です</string>
     <string name="revanced_enable_tablet_navigation_bar_summary_on">タブレットのナビゲーションバーは有効です</string>
     <string name="revanced_enable_tablet_navigation_bar_title">タブレットのタブ切り替えレイアウトを有効にする</string>
-    <string name="revanced_enable_time_stamp_speed_summary_off">タイムスタンプ右横の再生速度の表示は無効です</string>
-    <string name="revanced_enable_time_stamp_speed_summary_on">タイムスタンプ右横の再生速度の表示は有効です</string>
-    <string name="revanced_enable_time_stamp_speed_title">再生速度を表示する</string>
     <string name="revanced_enable_vp9_codec_summary">デバイス情報を偽装してVP9 コーデックを有効にします</string>
     <string name="revanced_enable_vp9_codec_title">VP9コーデックを有効にする</string>
     <string name="revanced_enable_wide_search_bar_summary_off">幅の広い検索バーは無効です</string>
@@ -591,7 +588,6 @@
     <string name="revanced_show_fullscreen_title_summary">全画面表示で左上に動画のタイトルを表示します
 (既知の問題: タイトルをタップしてもなにも起こりません)</string>
     <string name="revanced_show_fullscreen_title_title">全画面表示で動画のタイトルを表示する</string>
-    <string name="revanced_sponsorblock_settings_summary">SponsorBlock関連の設定</string>
     <string name="revanced_spoof_app_version_summary">"YouTubeのバージョンを古いバージョンに偽装します
 この機能を有効にすることにより、アプリのUIが古いものに変わりますが、未知のバグが発生する可能性があります
 この機能を無効にしてもアプリのデータを消去するまで古い Ul が残る場合があります"</string>
@@ -778,8 +774,6 @@
     <string name="sb_reset_color">色をリセットする</string>
     <string name="sb_reset">リセット</string>
     <string name="sb_about_api_sum">データは SponsorBlock API によって提供されます。詳細はここをタップして、他のプラットフォームのダウンロードをご覧ください。</string>
-    <string name="sb_about_made_by">JakubWeg による統合</string>
-    <string name="seconds">秒</string>
     <string name="settings_export_failed">設定の書き出しに失敗しました</string>
     <string name="settings_export_successful">設定は正常に書き出されました</string>
     <string name="settings_ie">設定の読み込み/書き出し</string>
